@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>b7ae6a5f-ca2c-4cd5-bcbb-cf8d6942af2e</ProjectGuid>
+    <ProjectGuid>{B7AE6A5F-CA2C-4CD5-BCBB-CF8D6942AF2E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Negocio</RootNamespace>
@@ -31,24 +31,42 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System"/>
-    
-    <Reference Include="System.Core"/>
-    <Reference Include="System.Xml.Linq"/>
-    <Reference Include="System.Data.DataSetExtensions"/>
-    
-    
-    <Reference Include="Microsoft.CSharp"/>
-    
-    <Reference Include="System.Data"/>
-    
-    <Reference Include="System.Net.Http"/>
-    
-    <Reference Include="System.Xml"/>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="CategoriaNegocio.cs" />
+    <Compile Include="CompraNegocio.cs" />
+    <Compile Include="ContactoNegocio.cs" />
+    <Compile Include="DetalleCompraNegocio.cs" />
+    <Compile Include="DetalleVentaNegocio.cs" />
+    <Compile Include="ImagenNegocio.cs" />
+    <Compile Include="MarcaNegocio.cs" />
+    <Compile Include="PermisoNegocio.cs" />
+    <Compile Include="ProductoNegocio.cs" />
+    <Compile Include="Producto_x_ProveedorNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProveedorNegocio.cs" />
+    <Compile Include="TamanioNegocio.cs" />
+    <Compile Include="Tamanio_x_ProductoNegocio.cs" />
+    <Compile Include="UsuarioNegocio.cs" />
+    <Compile Include="VentaNegocio.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AccesoADatos\AccesoADatos.csproj">
+      <Project>{413a5d08-d05d-4044-80ba-16c8ce3e71cf}</Project>
+      <Name>AccesoADatos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dominio\Dominio.csproj">
+      <Project>{67d3e12b-9a3a-45c5-a219-fbd9fa8dfd37}</Project>
+      <Name>Dominio</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
- </Project>
+</Project>

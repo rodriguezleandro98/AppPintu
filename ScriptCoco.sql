@@ -45,21 +45,30 @@ CREATE TABLE Imagenes(
 );
 GO
 
+CREATE TABLE Contactos (
+    ID INT NOT NULL IDENTITY(1,1),
+    Nombre VARCHAR(50) NULL,
+    Apellido VARCHAR(50) NULL,
+    CorreoElectronico VARCHAR(50) NULL,
+    Telefono VARCHAR(15) NULL,
+    Direccion VARCHAR(100) NULL, -- Para proveedores
+    PRIMARY KEY (ID)
+);
+GO
+
 CREATE TABLE Usuarios(
 	ID INT NOT NULL IDENTITY(1,1),
 	IDPermiso INT NOT NULL,
+	IDContacto INT NOT NULL,
+	IDImagen BIGINT NULL,
 	NombreUsuario VARCHAR(30) NOT NULL,
 	Contrasenia VARCHAR(30) NOT NULL,
-	Nombre VARCHAR(30) NULL,
-    Apellido VARCHAR(30) NULL,
-    CorreoElectronico VARCHAR(50) NULL,
-    Telefono VARCHAR(15) NULL,
-	IDImagen BIGINT NULL,
     FechaCreacion DATETIME NOT NULL DEFAULT GETDATE(),
 	Activo BIT NOT NULL default 1,
 	PRIMARY KEY(ID),
 	FOREIGN KEY (IDPermiso) REFERENCES Permisos(ID),
-	FOREIGN KEY (IDImagen) REFERENCES Imagenes(ID)
+	FOREIGN KEY (IDImagen) REFERENCES Imagenes(ID),
+	FOREIGN KEY (IDContacto) REFERENCES Contactos(ID)
 );
 GO
 
@@ -81,12 +90,10 @@ CREATE TABLE Proveedores(
 	ID INT NOT NULL IDENTITY(1,1),
 	CUIT BIGINT NOT NULL,
 	Siglas VARCHAR(5) NOT NULL UNIQUE,
-	Nombre VARCHAR(30) NOT NULL,
-	Direccion VARCHAR(100) NOT NULL,
-	Correo VARCHAR(50) NOT NULL,
-	Telefono VARCHAR(15) NOT NULL,
+	IDContacto INT NOT NULL,
 	Activo BIT NOT NULL default 1,
 	PRIMARY KEY(ID),
+	FOREIGN KEY (IDContacto) REFERENCES Contactos(ID)
 );
 GO
 
@@ -108,7 +115,6 @@ CREATE TABLE Productos(
 GO
 
 CREATE TABLE Tamanio_x_producto(
-	ID BIGINT NOT NULL IDENTITY(1,1),
 	IDProducto BIGINT NOT NULL,
 	IDTamanio INT NOT NULL,
 	Precio_Venta MONEY NOT NULL,

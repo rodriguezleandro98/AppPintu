@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AccesoADatos
+namespace Dominio
 {
-    public class Class1
+    public class Permiso
     {
+        public int Id { get; set; }
+        public string NombrePermiso { get; set; }
     }
 }
